@@ -1,4 +1,4 @@
-[Блок-схема игры.drawio](https://github.com/user-attachments/files/26054418/-.drawio)Название: Игра "Быки и коровы"
+Название: Игра "Быки и коровы"
 
 Какую проблему решает данный проект: 
 Проект демонстрирует ключевые основы алгоритмизации и программирования: генерацию случайных чисел, проверку пользовательского ввода,
@@ -24,4 +24,8 @@
 - Вывод результатов хода
 - Повторение ходов до победы
 
-  [Диаграмма без названия.drawio.pdf](https://github.com/user-attachments/files/26062145/drawio.pdf)
+USE CASE диаграмма
+<img width="651" height="431" alt="USE CASE диаграмма" src="https://github.com/user-attachments/assets/5ccd5b46-2058-4e7a-9662-727c62263e20" />
+
+Блок-схема приложения
+<img width="651" height="431" alt="Блок-схема игры" src="https://github.com/user-attachments/assets/52055362-e45e-445a-a0a1-00ed1aa1aeb3" />
