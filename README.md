@@ -25,7 +25,8 @@
 - Повторение ходов до победы
 
 USE CASE диаграмма
-<img width="826" height="521" alt="Диаграмма без названия (1)" src="https://github.com/user-attachments/assets/32a6279c-d3e0-4793-b45b-29765e5568fa" />
+<img width="826" height="521" alt="Диаграмма без названия drawio (1)" src="https://github.com/user-attachments/assets/4a6e2968-2d5d-4403-973f-8c983e1a9f17" />
+
 
 
 Блок-схема приложения
