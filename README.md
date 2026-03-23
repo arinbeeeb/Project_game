@@ -30,4 +30,5 @@ USE CASE диаграмма
 
 
 Блок-схема приложения
-<img width="651" height="431" alt="Блок-схема игры" src="https://github.com/user-attachments/assets/52055362-e45e-445a-a0a1-00ed1aa1aeb3" />
+<img width="751" height="396" alt="Диаграмма без названия-Страница-2 drawio" src="https://github.com/user-attachments/assets/8881a825-0609-40dd-8735-ae1c1a53e2e4" />
+
