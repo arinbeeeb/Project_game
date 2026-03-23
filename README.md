@@ -25,7 +25,7 @@
 - Повторение ходов до победы
 
 USE CASE диаграмма
-<img width="651" height="431" alt="USE CASE диаграмма" src="https://github.com/user-attachments/assets/5ccd5b46-2058-4e7a-9662-727c62263e20" />
+<img width="826" height="521" alt="диаграмма без названия" src="https://github.com/user-attachments/assets/9dba4876-4287-47fd-a3aa-a1318603a008" />
 
 Блок-схема приложения
 <img width="651" height="431" alt="Блок-схема игры" src="https://github.com/user-attachments/assets/52055362-e45e-445a-a0a1-00ed1aa1aeb3" />
