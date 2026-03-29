@@ -1,5 +1,6 @@
 import tkinter as tk
 import random 
+from tkinter import scrolledtext # многострочный редактор текста с возможностью прокрутки
 from tkinter import messagebox #всплывающие окна
 import json #загрузка статистики в файл
 import os #проверка существования файла
@@ -82,7 +83,7 @@ def create_widgets(self): #создаёт интерфейс
                                       font=("Arial", 12), bg='lightgray', fg='green')
         self.status_label.pack(side=tk.RIGHT, padx=20, pady=5)
         
-        # Кнопки управления
+        #кнопки управления
         button_frame = tk.Frame(main_frame)
         button_frame.pack(pady=10)
         
@@ -125,7 +126,7 @@ def make_guess(self):#обработка ввода числа
             logging.warning(f"Попытка ввода с повторяющимися цифрами: {guess}") #запись предупреждения
             return
         
-        # Подсчет быков и коров
+        #подсчет быков и коров
         bulls = 0
         cows = 0
         
@@ -138,7 +139,7 @@ def make_guess(self):#обработка ввода числа
         self.attempts += 1 #обновление счетчика попыток
         self.attempts_label.config(text=f"попыток: {self.attempts}") 
         
-        # Запись хода
+        #запись хода
         move_text = f"попытка #{self.attempts}: {guess} → БЫКИ: {bulls}, КОРОВЫ: {cows}"
         self.add_to_history(move_text)
         
@@ -163,9 +164,9 @@ def game_over(self, win): #конец игры
             self.status_label.config(text="поражение", fg='red')
             self.add_to_history(f"\n ПОРАЖЕНИЕ, загаданное число: {self.secret_number} \n")
 
-# Показ окна с результатом
+#окно с результатом
         result_window = tk.Toplevel(self.root)
-        result_window.title("Результат игры")
+        result_window.title("результат игры")
         result_window.geometry("300x200")
         result_window.resizable(False, False)
         result_window.grab_set()
@@ -176,99 +177,140 @@ def game_over(self, win): #конец игры
         btn_frame = tk.Frame(result_window)
         btn_frame.pack(pady=10)
         
-        tk.Button(btn_frame, text="Новая игра", 
+        tk.Button(btn_frame, text="НОВАЯ ИГРА", 
                  command=lambda: (result_window.destroy(), self.new_game()),
                  font=("Arial", 10), bg='lightgreen', width=12).pack(side=tk.LEFT, padx=5)
         
-        tk.Button(btn_frame, text="Закрыть", 
+        tk.Button(btn_frame, text="закрыть", 
                  command=result_window.destroy,
                  font=("Arial", 10), width=12).pack(side=tk.LEFT, padx=5)
-    
-# Показ окна с результатом
-        result_window = tk.Toplevel(self.root)
-        result_window.title("Результат игры")
-        result_window.geometry("300x200")
-        result_window.resizable(False, False)
-        result_window.grab_set()
-        
-        tk.Label(result_window, text=message, font=("Arial", 12), 
-                 wraplength=280, pady=20).pack()
-        
-        btn_frame = tk.Frame(result_window)
-        btn_frame.pack(pady=10)
-        
-        tk.Button(btn_frame, text="Новая игра", 
-                 command=lambda: (result_window.destroy(), self.new_game()),
-                 font=("Arial", 10), bg='lightgreen', width=12).pack(side=tk.LEFT, padx=5)
-        
-        tk.Button(btn_frame, text="Закрыть", 
-                 command=result_window.destroy,
-                 font=("Arial", 10), width=12).pack(side=tk.LEFT, padx=5)
-    
-# Показ окна с результатом
-        result_window = tk.Toplevel(self.root)
-        result_window.title("Результат игры")
-        result_window.geometry("300x200")
-        result_window.resizable(False, False)
-        result_window.grab_set()
-        
-        tk.Label(result_window, text=message, font=("Arial", 12), 
-                 wraplength=280, pady=20).pack()
-        
-        btn_frame = tk.Frame(result_window)
-        btn_frame.pack(pady=10)
-        
-        tk.Button(btn_frame, text="Новая игра", 
-                 command=lambda: (result_window.destroy(), self.new_game()),
-                 font=("Arial", 10), bg='lightgreen', width=12).pack(side=tk.LEFT, padx=5)
-        
-        tk.Button(btn_frame, text="Закрыть", 
-                 command=result_window.destroy,
-                 font=("Arial", 10), width=12).pack(side=tk.LEFT, padx=5)
-    
-# Показ окна с результатом
-        result_window = tk.Toplevel(self.root)
-        result_window.title("Результат игры")
-        result_window.geometry("300x200")
-        result_window.resizable(False, False)
-        result_window.grab_set()
-        
-        tk.Label(result_window, text=message, font=("Arial", 12), 
-                 wraplength=280, pady=20).pack()
-        
-        btn_frame = tk.Frame(result_window)
-        btn_frame.pack(pady=10)
-        
-        tk.Button(btn_frame, text="Новая игра", 
-                 command=lambda: (result_window.destroy(), self.new_game()),
-                 font=("Arial", 10), bg='lightgreen', width=12).pack(side=tk.LEFT, padx=5)
-        
-        tk.Button(btn_frame, text="Закрыть", 
-                 command=result_window.destroy,
-                 font=("Arial", 10), width=12).pack(side=tk.LEFT, padx=5)
-    
- # Показ окна с результатом
-        result_window = tk.Toplevel(self.root) #дополнительное окно
-        result_window.title("РЕЗУЛЬТАТЫ ИГРЫ")
-        result_window.geometry("300x200")
-        result_window.resizable(False, False)
-        result_window.grab_set()
-        
-        tk.Label(result_window, text=message, font=("Arial", 12), #вывод результата победа или поражение
-                 wraplength=280, pady=20).pack()
-        
-        btn_frame = tk.Frame(result_window) #для кнопок
-        btn_frame.pack(pady=10)
-
-        tk.Button(btn_frame, text="НОВАЯ ИГРА",
-         command=lambda: (result_window.destroy(), self.new_game()),  # закрывает окно с результатом, запуская новую игру
-         font=("Arial", 10), bg='lightgreen', width=12).pack(side=tk.LEFT, padx=5)
-        
-        tk.Button(btn_frame, text="ЗАКРЫТЬ", #закрывает окно результата для продожения 
-                 command=result_window.destroy,
-                 font=("Arial", 10), width=12).pack(side=tk.LEFT, padx=5)
-    
+           
 def new_game(self): #начать новую игру
         self.secret_number = self.generate_secret_number() #генерирует новое случайное число
         self.attempts = 0 #сброс счетчика попыток
-        self.game_active = True
+        self.game_active = True #игра снова активна
+
+        self.attempts_label.config(text="ПОПЫТОК: 0") #сброс счетчика на экране
+        self.status_label.config(text="ИГРА АКТИВНА", fg='green') #статус о готовности
+        self.guess_btn.config(state='normal') 
+        self.entry.config(state='normal')
+        self.entry.delete(0, tk.END) #очищение поля ввода
+        self.entry.focus_set() #курсор в поле ввода 
+
+        self.history_text.delete(1.0, tk.END) #очищает текстовое поле
+        self.add_to_history(" НОВАЯ ИГРА, загадано 4-х значное число без повторяющихся цифр.\n") 
+        self.add_to_history("введите свою догадку и нажмите 'ПРОВЕРИТЬ'!\n" + "="*50 + "\n") 
+   
+def show_rules(self):
+    games_played = 0 #переменная для подсчёта общего числа сыгранных игр
+    wins = 0  #переменная для подсчёта кол-во побед
+    attempts_list = [] #список сохранения кол-ва попыток
+
+    try:
+        with open(self.history_file, 'r', encoding='utf-8') as f: #откроет файа с историей игр для чтения и автоматич. закроектся после выхода из блока
+            for line in f: #перебор циклом каждой строки файла
+                if 'ПОБЕДА' in line: #поверка
+                    # увеличение кол-ва побед и игр сыгранных
+                    wins += 1
+                    games_played += 1
+                    if 'ПОПЫТОК:' in line: #проверка о кол-ве попыток
+                        try:
+                            attempts = int(line.split('ПОПЫТОК:')[1].strip()) #разбивает слово, беря часть после него убирая пробелы преобразуя строку в целое число
+                            attempts_list.append(attempts) #добовляет число в список
+                        except ValueError: #если неккоректное число, программа пропускает продолжая работу
+                            pass
+                elif 'ПОПЫТОК' in line: #в случае проигрыша увеличивает кол-во попыток
+                    games_played += 1
+    except FileNotFoundError: #при не обнаружении файла программа продолжает работу
+        pass
+
+    loss = games_played - wins #вычисление кол-ва поражений
+    win_percent = (wins / games_played * 100) if games_played > 0 else 0 #вычисление % побед
+    avg_attempts = sum(attempts_list) / len(attempts_list) if attempts_list else 0 #вычисление кол-ва попыток в среднем
+    best_attempts = min(attempts_list) if attempts_list else 0 #вычисление лучшего результата
+
+def show_stats(self): #поверхностное окно
+    stats_window = tk.Toplevel(self.root)
+    stats_window.title("СТАТИСТИКА")
+    stats_window.geometry("400x400")
+    stats_window.resizable(False, False)
+
+    #заголовок окна
+    tk.Label(stats_window, text="статистика игр", font=("Arial", 16, "bold")).pack(pady=10)
+
+    #рамка статистики
+    stats_frame = tk.Frame(stats_window)
+    stats_frame.pack(pady=10, padx=20, fill=tk.BOTH)
+
+    #вычисляем статистику
+    games_played = self.stats.get('games_played', 0)
+    wins = self.stats.get('wins', 0)
+    losses = games_played - wins
+    total_attempts = self.stats.get('total_attempts', 0)
+    best_attempts = self.stats.get('best_attempts', 0)
+    avg_attempts = total_attempts / games_played if games_played > 0 else 0
+    win_percent = (wins / games_played * 100) if games_played > 0 else 0
+
+    stats_text = (
+        f"сыграно игр: {games_played}\n"
+        f"побед: {wins}\n"
+        f"поражений: {losses}\n"
+        f"процент побед: {win_percent:.1f}%\n"
+        f"среднее попыток: {avg_attempts:.1f}\n"
+        f"лучший результат: {best_attempts} попыток"
+    )
+
+    tk.Label(stats_frame, text=stats_text, font=("Arial", 12), justify=tk.LEFT).pack(anchor=tk.W)
+
+    #Кнопки управления 
+    btn_frame = tk.Frame(stats_window)
+    btn_frame.pack(pady=10)
+
+    #функция сброса статистики
+    def reset_and_log():
+        self.reset_stats_confirmation()
+
+    tk.Button(btn_frame, text="сбросить статистику", 
+              command=reset_and_log, 
+              font=("Arial", 12), bg="lightcoral").pack(side=tk.LEFT, padx=10)
+
+    tk.Button(btn_frame, text="ЗАКРЫТЬ",
+              command=lambda: (stats_window.destroy(), logging.info("окно статистики закрыто")),
+              font=("Arial", 12)).pack(side=tk.LEFT, padx=10)
+
+    logging.info("открыто окно статистики")
+    
+def reset_stats_confirmation(self):  #окно сброса статистики
+    result = messagebox.askyesno( #всплывающее окно
+        "сброс статистики", 
+        "уверены, что хотите обнулить всю статистику?"
+    )
+
+    if result: #сброс статистики в исходные значения
+        self.stats = self.default_stats()  #метод возвращает словарь с нулями
+        self.save_stats()                  #сохраняем сброшенную статистику в файл
+        logging.info("Статистика сброшена пользователем")  #запись в лог
+        messagebox.showinfo("Статистика", "Статистика сброшена.")  #сообщение пользователю
+    else:
+        logging.info("Сброс статистики отменён")  #запись в лог при отмене
+
+#настройка логирования
+logging.basicConfig(
+    filename='game.log', #куда сохранять лог
+    level=logging.INFO, #стандартные информативные сообщения
+    format='%(asctime)s - %(levelname)s - %(message)s', #время записи, уровень сообщения, текст сообщения
+    encoding='utf-8' #язык
+)
+
+root = tk.Tk()  #создание гл.окна
+game = BullsAndCowsGame(root)  #объект класса передаваемый в гл.окно 
+
+root.protocol(
+    "WM_DELETE_WINDOW",
+    lambda: (
+        logging.info("игра 'БЫКИ И КОРОВЫ' закрыта пользователем"), #записывает в лог, что пользователь закрыл приложение
+        root.destroy() #закрывает окно и завершает работу программы
+    )
+)
+
+root.mainloop()  #запуск гл. цикла окна
