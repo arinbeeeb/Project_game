@@ -1,0 +1,6 @@
+self.stats = {
+            'games_played': 0,
+            'wins': 0,
+            'total_attempts': 0,
+            'best_attempts': 0
+        }
