@@ -14,7 +14,6 @@ logging.basicConfig(
     encoding='utf-8'
 )
 
-
 class BullsAndCowsGame:  # создаём класс игры
     def __init__(self, root):  # создаём главное окно, для установки значений атрибутов
         self.root = root  # ссылка на объект класса, все методы могут работать с этим окном
@@ -105,11 +104,6 @@ class BullsAndCowsGame:  # создаём класс игры
                                       command=self.new_game,
                                       font=("Arial", 11), bg='lightgreen', width=12)
         self.new_game_btn.pack(side=tk.LEFT, padx=5)
-
-        self.rules_btn = tk.Button(button_frame, text="ПРАВИЛА",
-                                   command=self.show_rules,
-                                   font=("Arial", 11), bg='lightyellow', width=12)
-        self.rules_btn.pack(side=tk.LEFT, padx=5)
 
         self.stats_btn = tk.Button(button_frame, text="СТАТИСТИКА",
                                    command=self.show_stats,
